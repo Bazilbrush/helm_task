@@ -36,18 +36,27 @@ If you have worked or are working on something else that you're more interested 
 15. Code smells: the get_bird function has no error handling lets add some. lets also add some input validation. we can also make sure that similar inputs like 'md' or 'Md' are equal to the desired "MD" but lets not do this here.
 15.1 more code smells: in the get Bird function i chnaged how the query is templated slightly, it should help with sql injection somewhat.
 15.2 remove redundant print statements
+15.3 in the app main function  we always return "return out, 200, {'Content-Type': 'application/json'}" perhaps this could be chnaged to give different return codes if let's say we input an incorrect state or the weaher website is down
+16. lets look at the helm tests: running "helm test birds-1717142343" it returns: STATUS: deployed
+REVISION: 1
+TEST SUITE:     birds-1717142343-test-connection
+Last Started:   Fri May 31 09:01:58 2024
+Last Completed: Fri May 31 09:02:56 2024
+Phase:          Succeeded
+
+Thus it can be concluded that this application works in the cluster.
+17. do we really need to set "maxReplicas: 100"? perhaps 3 for this application will do. in case of a ddos attack we will not atleast incur high costs. 
+
+Extras:
+- we probably should chnage flask to run in ptoduction mode
+- add an application LB with a proper DNS entry
+- add Https support
+- add proper logging to the application
+- for point 17. perhaps we should look into WAF or other means of mitigating ddos
+- if this application is going to be run at a reasonable load maybe we could use a different Database? 
 
 
 
 
 
-
-
-
-
-aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 520686339686.dkr.ecr.eu-west-1.amazonaws.com
-
-docker tag birds:latest 520686339686.dkr.ecr.eu-west-1.amazonaws.com/birds:latest
-
-docker push 520686339686.dkr.ecr.eu-west-1.amazonaws.com/birds:latest
 
