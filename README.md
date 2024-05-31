@@ -34,6 +34,7 @@ If you have worked or are working on something else that you're more interested 
 14. test the app curl http://127.0.0.1:8080/AZ
 
 15. Code smells: the get_bird function has no error handling lets add some. lets also add some input validation. we can also make sure that similar inputs like 'md' or 'Md' are equal to the desired "MD" but lets not do this here.
+15.1 more code smells: in the get Bird function i chnaged how the query is templated slightly, it should help with sql injection somewhat.
 
 
 

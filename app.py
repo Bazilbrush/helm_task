@@ -27,7 +27,6 @@ def get_bird(state: str):
         rows = cursor.fetchall()
         list_accumulator = []
         for item in rows:
-            print(item)
             list_accumulator.append({k: item[k] for k in item.keys()})
 
         return json.dumps(list_accumulator)
@@ -54,7 +53,6 @@ def hello():
 def bird(state):
 
     bird = get_bird(state)
-    print(bird)
     weather = get_weather(state)
     out = str([bird, weather])
    
