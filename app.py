@@ -22,11 +22,11 @@ def get_bird(state: str):
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
-        print(f"select * from birds where abbreviation = '{state}';")
-        row = cursor.execute(f"select * from birds where abbreviation = '{state}';")
-        res = row.fetchall()
+        query = "SELECT * FROM birds WHERE abbreviation = ?"
+        cursor.execute(query, (state,))
+        rows = cursor.fetchall()
         list_accumulator = []
-        for item in res:
+        for item in rows:
             print(item)
             list_accumulator.append({k: item[k] for k in item.keys()})
 
