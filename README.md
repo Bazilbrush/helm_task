@@ -32,7 +32,9 @@ If you have worked or are working on something else that you're more interested 
   kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT
 
 14. test the app curl http://127.0.0.1:8080/AZ
-15. lets s
+
+15. Code smells: the get_bird function has no error handling lets add some.
+
 
 
 
